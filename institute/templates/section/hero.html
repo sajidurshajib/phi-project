@@ -1,0 +1,30 @@
+{% load static %}
+
+<div class="md:h-[85vh] loading-container mt-16">
+    <div
+        class="w-full h-[80vh] md:h-full rounded-sm shadow-md relative loading-src"
+        style="
+            background-size: cover;
+            background-position: center;
+            background-image: url('{% static 'img/ssphi-pix.png' %}');
+        "></div>
+
+    <div
+        class="w-full h-[80vh] md:h-full rounded-sm shadow-md relative loaded-src"
+        data-src="{% static 'img/ssphi.png' %}"
+        style="background-size: cover; background-position: center">
+        <div class="w-full md:w-[750px] p-4 absolute left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%]">
+            <h1 class="text-white text-center my-8 md:scale-125 text-2xl md:text-4xl">
+                South Sudan Public Health Institute
+            </h1>
+            <p class="text-white text-center bg-blue-500 p-1 my-4">
+                The official website for SSPHI under the Ministry of Health
+            </p>
+            <a
+                href="/about"
+                class="rounded-md bg-blue-500 text-white text-center w-36 block px-4 py-2 border-2 border-primary hover:bg-transparent hover:text-primary my-6 font-semibold mx-auto"
+                >Read More</a
+            >
+        </div>
+    </div>
+</div>

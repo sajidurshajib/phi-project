@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap"
+            rel="stylesheet" />
+        <link rel="icon" href="{% static 'img/phi.jpg' %}" type="image/x-icon" />
+        <link href="{% static 'css/style.min.css' %}" rel="stylesheet" />
+        <script src="{% static 'js/bgload.js' %}" type="text/javascript" defer></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
+        <title>{{ title|default:"PHI" }}</title>
+    </head>
+    <body class="font-sans">
+        <div>{% include 'nav/main-nav.html' %}</div>
+        <div>{% include 'nav/main-nav-small.html' %}</div>
+        <div>{% block content %} {% endblock %}</div>
+        {% include 'footer.html' %}
+    </body>
+    <script>
+        // menu
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const submenuToggles = document.querySelectorAll('.submenu-toggle');
+
+        // Toggle mobile menu
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Toggle submenus
+        submenuToggles.forEach((toggle) => {
+            toggle.addEventListener('click', () => {
+                const submenu = toggle.nextElementSibling;
+                submenu.classList.toggle('hidden');
+            });
+        });
+    </script>
+</html>

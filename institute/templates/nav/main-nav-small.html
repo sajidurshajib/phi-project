@@ -1,0 +1,102 @@
+{% load static %}
+<div class="shadow-md block md:hidden fixed top-0 w-full z-50 bg-white">
+    <div class="md:container mx-auto flex justify-between items-center gap-10 p-4">
+        <a href="/" class="flex justify-start items-center gap-5 py-2 max-w-[180px]">
+            <img src="{% static 'img/phi.jpg' %}" width="60px" />
+            <h2 class="font-robotoSans font-extraBold text-blue-500">SSPHI</h2>
+        </a>
+        <!-- Mobile Menu Button -->
+        <button id="menu-toggle" class="md:hidden text-blue-500 focus:outline-none">
+            <i class="fa-solid fa-bars text-2xl"></i>
+        </button>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden hidden bg-white overflow-auto transition-all duration-300">
+        <ul class="text-black uppercase text-sm">
+            <li class="flex items-center p-4 hover:bg-blue-50 border-y-2 border-gray-200 transition-all duration-300">
+                <a href="/" class="no-underline w-full">Home</a>
+            </li>
+            <li
+                class="flex flex-col items-start p-4 relative hover:bg-blue-50 border-b-2 border-gray-200 transition-all duration-300">
+                <button class="submenu-toggle flex justify-between items-center w-full">
+                    About <i class="fa-solid fa-angle-down"></i>
+                </button>
+                <ul class="submenu-mobile hidden w-full mt-2 transition-all duration-300">
+                    <li class="w-full hover:text-blue-500">
+                        <a href="/" class="block pl-3 py-3">Background Information</a>
+                    </li>
+                    <li class="w-full hover:text-blue-500">
+                        <a href="/" class="block pl-3 py-3">Management</a>
+                    </li>
+                    <li class="w-full hover:text-blue-500">
+                        <a href="/" class="block pl-3 py-3">History</a>
+                    </li>
+                    <li class="w-full hover:text-blue-500">
+                        <a href="/" class="block pl-3 py-3">Partners</a>
+                    </li>
+                </ul>
+            </li>
+            <li
+                class="flex flex-col items-start p-4 relative hover:bg-blue-50 border-b-2 border-gray-200 transition-all duration-300">
+                <button class="submenu-toggle flex justify-between items-center w-full">
+                    Programs <i class="fa-solid fa-angle-down"></i>
+                </button>
+                <ul class="submenu-mobile hidden w-full mt-2 transition-all duration-300">
+                    <li class="w-full hover:text-blue-500">
+                        <a href="/" class="block pl-3 py-3">Surveillance & Disease Intelligence</a>
+                    </li>
+                    <li class="w-full hover:text-blue-500">
+                        <a href="/" class="block pl-3 py-3">Emergency Preparedness, Response & EOC</a>
+                    </li>
+                    <li class="w-full hover:text-blue-500">
+                        <a href="/" class="block pl-3 py-3">Laboratory Services and Public Health</a>
+                    </li>
+                    <li class="w-full hover:text-blue-500">
+                        <a href="/" class="block pl-3 py-3">Workforce Development</a>
+                    </li>
+                    <li class="w-full hover:text-blue-500">
+                        <a href="/" class="block pl-3 py-3">Public Health LMG</a>
+                    </li>
+                    <li class="w-full hover:text-blue-500">
+                        <a href="/" class="block pl-3 py-3">Data Management Fellowship</a>
+                    </li>
+                    <li class="w-full hover:text-blue-500">
+                        <a href="/" class="block pl-3 py-3">Non-Communicable Diseases and Injuries</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="flex items-center p-4 hover:bg-blue-50 border-b-2 border-gray-200 transition-all duration-300">
+                <a href="/" class="no-underline w-full">Resources</a>
+            </li>
+            <li class="flex items-center p-4 hover:bg-blue-50 border-b-2 border-gray-200 transition-all duration-300">
+                <a href="/" class="no-underline w-full">Projects</a>
+            </li>
+            <li class="flex items-center p-4 hover:bg-blue-50 border-b-2 border-gray-200 transition-all duration-300">
+                <a href="/" class="no-underline w-full">Training Opportunity</a>
+            </li>
+            <li
+                class="flex flex-col items-start p-4 relative hover:bg-blue-50 border-b-2 border-gray-200 transition-all duration-300">
+                <button class="submenu-toggle flex justify-between items-center w-full">
+                    Media <i class="fa-solid fa-angle-down"></i>
+                </button>
+                <ul class="submenu-mobile hidden w-full mt-2 transition-all duration-300">
+                    <li class="w-full hover:text-blue-500">
+                        <a href="/" class="block pl-3 py-3">News</a>
+                    </li>
+                    <li class="w-full hover:text-blue-500">
+                        <a href="/" class="block pl-3 py-3">Press Release</a>
+                    </li>
+                    <li class="w-full hover:text-blue-500">
+                        <a href="/" class="block pl-3 py-3">Gallery</a>
+                    </li>
+                    <li class="w-full hover:text-blue-500">
+                        <a href="/" class="block pl-3 py-3">Events</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="flex items-center p-4 hover:bg-blue-50 border-b-2 border-gray-200 transition-all duration-300">
+                <a href="/" class="no-underline w-full">Contact Us</a>
+            </li>
+        </ul>
+    </div>
+</div>
