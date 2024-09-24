@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'base.apps.BaseConfig',
+    'accounts.apps.AccountsConfig',
+    'dashboard.apps.DashboardConfig',
 ]
 
 MIDDLEWARE = [
@@ -116,6 +118,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'accounts.backends.EmailBackend',  # Add this line
+    'django.contrib.auth.backends.ModelBackend',  # Keep this if you also want to support username authentication
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/

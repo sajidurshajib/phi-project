@@ -1,0 +1,19 @@
+{% extends 'layout.html' %} {% block content%} {% load static %}
+
+<div>{% include 'header/mountain-header.html' %}</div>
+<div>{% include 'section/mission-vision-right.html' %}</div>
+<div>{% include 'section/about/who-is-who.html' %}</div>
+<div class="md:container mx-auto px-8 pb-10">
+    <div class="p-4 md:p-10 rounded-xl shadow-xl">
+        {% include 'section/about/core-values.html' %}
+        <img src="{% static 'img/humble_beginning.png' %}" alt="humble beginning" class="mt-4 w-full" />
+        <p class="text-center">
+            Ministry of Health on February 11th, 2019, through a Ministerial Order No :004/2019 established a Steering
+            Committee (SC) and Technical Working Group (TWG) for establishment of South Sudan Public Health Institute
+            (SSPHI). The technical working group was decreed to provide oversight and stewardship for the establishment
+            of the institute.
+        </p>
+    </div>
+</div>
+
+{% endblock %}

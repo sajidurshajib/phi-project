@@ -1,0 +1,30 @@
+{% extends 'layout.html' %} {% block content%} {% load static %}
+
+<div>{% include 'header/mountain-header.html' %}</div>
+
+<div class="md:container mx-auto p-4 md:p-10">
+    <div class="m-4 rounded-xl shadow-xl p-4 md:p-10">
+        <p>
+            Ministry of Health on February 11th, 2019, through a Ministerial Order No :004/2019 established a Steering
+            Committee (SC) and Technical Working Group (TWG) for establishment of South Sudan Public Health Institute
+            (SSPHI). The technical working group was decreed to provide oversight and stewardship for the establishment
+            of the institute.
+        </p>
+        <br />
+        <br />
+        <div class="grid grid-cols-12 gap-8">
+            <div class="col-span-12 md:col-span-8">
+                <img src="{% static 'img/humble_beginning.png' %}" alt="humble beginning" class="mt-4 w-full" />
+            </div>
+            <div class="col-span-12 md:col-span-4">
+                <h4 class="mt-4">
+                    From a committee to a visible physical office. The first SSPHI office door was opened in the MOH on
+                    3rd of January 2022 in a small prefab. The temporary structure first started with 7 Staffs
+                    (Director, Epidemiologist, Public Health Specialist, Training Coordinator, Training Officer, M&E
+                    officer and Technical Advisor)
+                </h4>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

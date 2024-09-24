@@ -1,0 +1,9 @@
+{% extends 'layout.html' %} {% block content%} {% load static %}
+
+<div>{% include 'header/mountain-header.html' %}</div>
+<div>{% include 'section/mission-vision-left.html' %}</div>
+<div class="md:container mx-auto p-4 md:p-10">
+    <div class="shadow-xl rounded-xl p-4 md:p-10">{% include 'section/about/core-values.html' %}</div>
+</div>
+
+{% endblock %}
