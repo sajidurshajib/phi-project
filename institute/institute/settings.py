@@ -46,9 +46,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'tinymce',
     'base.apps.BaseConfig',
     'accounts.apps.AccountsConfig',
     'dashboard.apps.DashboardConfig',
+    'events.apps.EventsConfig',
 ]
 
 MIDDLEWARE = [
@@ -128,7 +130,7 @@ AUTHENTICATION_BACKENDS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Juba'
 
 USE_I18N = True
 
