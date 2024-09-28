@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'base.apps.BaseConfig',
     'accounts.apps.AccountsConfig',
     'dashboard.apps.DashboardConfig',
+    'management.apps.ManagementConfig',
     'events.apps.EventsConfig',
 ]
 

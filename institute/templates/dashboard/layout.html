@@ -30,24 +30,14 @@
                     </a>
                     <div class="mt-10">
                         <a
-                            href="/dashboard/events"
+                            href="/dashboard/managements"
                             class="mx-12 {% if request.resolver_match.url_name == 'dashboard-events' or request.resolver_match.url_name == 'dashboard-events-add' %}bg-blue-500 text-white{% else %} bg-slate-200 text-gray-500 {% endif %} hover:bg-blue-500 hover:text-white p-4 mb-2 rounded-md block"
                             ><i class="fa-solid fa-calendar-day"></i> Events</a
                         >
                         <a
-                            href="/dashboard/news"
-                            class="mx-12 {% if request.resolver_match.url_name == 'dashboard-news' %}bg-blue-500 text-white{% else %} bg-slate-200 text-gray-500 {% endif %} hover:bg-blue-500 hover:text-white p-4 mb-2 rounded-md block"
-                            ><i class="fa-regular fa-newspaper"></i> News</a
-                        >
-                        <a
-                            href="/dashboard/schools"
-                            class="mx-12 {% if request.resolver_match.url_name == 'dashboard-schools' %}bg-blue-500 text-white{% else %} bg-slate-200 text-gray-500 {% endif %} hover:bg-blue-500 hover:text-white p-4 mb-2 rounded-md block"
-                            ><i class="fa-solid fa-school"></i> Schools</a
-                        >
-                        <a
-                            href="/dashboard/courses"
-                            class="mx-12 {% if request.resolver_match.url_name == 'dashboard-courses' %}bg-blue-500 text-white{% else %} bg-slate-200 text-gray-500 {% endif %} hover:bg-blue-500 hover:text-white p-4 mb-2 rounded-md block"
-                            ><i class="fa-solid fa-book-open"></i> Courses</a
+                            href="/dashboard/events"
+                            class="mx-12 {% if request.resolver_match.url_name == 'dashboard-events' or request.resolver_match.url_name == 'dashboard-events-add' %}bg-blue-500 text-white{% else %} bg-slate-200 text-gray-500 {% endif %} hover:bg-blue-500 hover:text-white p-4 mb-2 rounded-md block"
+                            ><i class="fa-solid fa-calendar-day"></i> Events</a
                         >
                     </div>
                 </div>
