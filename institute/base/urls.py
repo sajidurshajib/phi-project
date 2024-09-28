@@ -11,4 +11,5 @@ urlpatterns = [
     path('programs/emergency', views.programs_emergency, name='programs-emergency'),
     path('programs/lab', views.programs_lab, name='programs-lab'),
     path('programs/workforce', views.programs_workforce, name='programs-workforce'),
+    path('media/events', views.media_events, name='media-events'),
 ]

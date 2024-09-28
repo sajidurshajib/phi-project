@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from events.views import all_events
 
 def main(request):
     context = {'title': 'Home'}
@@ -26,7 +27,6 @@ def programs_surveillance(request):
     context = {'title': 'Programs', 'title_detail':'PHI Program', 'subtitle': 'Surveillance & Disease Intelligence', }
     return render(request, 'programs-survillance.html', context)
 
-
 def programs_emergency(request):
     context = {'title': 'Programs', 'title_detail':'PHI Program', 'subtitle': 'Emergency Preparedness, Response & EOC', }
     return render(request, 'programs-emergency.html', context)
@@ -38,3 +38,10 @@ def programs_lab(request):
 def programs_workforce(request):
     context = {'title': 'Programs', 'title_detail':'PHI Program', 'subtitle': 'Workforce Development', }
     return render(request, 'programs-workforce.html', context)
+
+
+# media
+def media_events(request):
+    ev = all_events(request)
+    context = {'title': 'Events', 'title_detail':'Events', 'subtitle': 'Check all events', 'all_events': ev}
+    return render(request, 'media_events.html', context)

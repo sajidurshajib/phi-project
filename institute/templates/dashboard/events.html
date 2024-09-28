@@ -22,9 +22,10 @@
             </div> -->
             <div class="col-span-9">
                 <!-- <div class="col-span-5"> -->
-                <h4 class="text-gray-600">{{ n.name }}</h4>
-                <p class="text-gray-600">{{ n.body|striptags|slice:':100' }}</p>
-                <p class="text-gray-400">{{ n.date }}</p>
+                <h4 class="text-gray-600 font-bold">{{ n.name }}</h4>
+                <p class="text-gray-600 pt-2">{{ n.body|striptags|slice:':100' }}</p>
+                <p class="text-gray-400 py-2"><i class="fa-solid fa-location-dot"></i> {{ n.address }}</p>
+                <p class="text-gray-400"><i class="fa-solid fa-calendar-day"></i> {{ n.date }}</p>
             </div>
             <div class="col-span-3">
                 <div class="mb-4">

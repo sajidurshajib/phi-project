@@ -5,10 +5,14 @@ from .models import Events
 from .forms import EventForm
 
 
-@login_required(login_url='/accounts')
-def events(request):
+
+def all_events(request):
     events = Events.objects.order_by('-created_at')
     
+    name = request.GET.get('name', None)
+    if name:
+        events = events.filter(name__icontains=name)
+
     page = request.GET.get('page')
     limit = request.GET.get('limit', 6)
     paginator = Paginator(events, limit)  
@@ -18,7 +22,11 @@ def events(request):
         events = paginator.page(1)
     except EmptyPage:
         events = paginator.page(paginator.num_pages)
-        
+    return events    
+
+@login_required(login_url='/accounts')
+def events(request):
+    events = all_events(request)
     context = {'title': 'Events', 'events': events}
     return render(request, 'dashboard/events.html', context)
 

@@ -6,6 +6,7 @@ class Events(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField(unique=True, blank=True, max_length=255)
     body = models.TextField()
+    address = models.TextField(default='')
     date = models.DateField(default=datetime.now)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

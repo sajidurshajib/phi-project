@@ -1,0 +1,63 @@
+{% extends 'layout.html' %} {% block content%} {% load static %}
+<div>{% include 'header/mountain-header.html' %}</div>
+<div class="md:container mx-auto py-8">
+    <div class="bg-slate-50 rounded-xl flex justify-center items-center pt-8 pb-6">
+        <form method="GET" action="" class="mb-6">
+            <input
+                type="text"
+                name="name"
+                placeholder="Search events..."
+                value="{{ search_query }}"
+                class="md:w-[50vw] border border-gray-300 px-4 py-2 rounded-md focus:outline-none" />
+            <button type="submit" class="bg-blue-500 text-white rounded-md hover:bg-blue-600 px-8 py-2">Search</button>
+        </form>
+    </div>
+    <div class="mt-6 grid grid-cols-12 gap-4">
+        {% for n in all_events %}
+        <div class="bg-slate-100 p-4 col-span-12 md:col-span-6 rounded-sm mb-4">
+            <div class="col-span-9">
+                <!-- <div class="col-span-5"> -->
+                <h4 class="text-gray-600 font-bold">{{ n.name }}</h4>
+                <span class="text-gray-400"><i class="fa-solid fa-calendar-day"></i> {{ n.date }}</span>
+                <span class="text-gray-400 ml-4"><i class="fa-solid fa-location-dot"></i> {{ n.address }}</span>
+                <p class="text-gray-600 mt-2">{{ n.body|striptags|slice:':100' }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="flex justify-center pt-6">
+        <span>
+            {% if all_events.has_previous %}
+            <a
+                href="?page=1&limit=6"
+                class="bg-slate-200 text-gray-500 rounded-sm px-3 py-1 hover:bg-blue-500 hover:text-white"
+                ><< First</a
+            >
+            <a
+                href="?page={{ events.previous_page_number }}&limit=6"
+                class="bg-slate-200 text-gray-500 rounded-sm px-3 py-1 hover:bg-blue-500 hover:text-white"
+                >< Previous</a
+            >
+            {% endif %}
+
+            <span class="bg-slate-200 text-gray-700 rounded-sm px-3 py-1 mx-1">
+                Page {{ all_events.number }} of {{ all_events.paginator.num_pages }}
+            </span>
+
+            {% if all_events.has_next %}
+            <a
+                href="?page={{ events.next_page_number }}&limit=6"
+                class="bg-slate-200 text-gray-500 rounded-sm px-3 py-1 hover:bg-blue-500 hover:text-white"
+                >Next ></a
+            >
+            <a
+                href="?page={{ events.paginator.num_pages }}&limit=6"
+                class="bg-slate-200 text-gray-500 rounded-sm px-3 py-1 hover:bg-blue-500 hover:text-white"
+                >Last >></a
+            >
+            {% endif %}
+        </span>
+    </div>
+</div>
+
+{% endblock %}
