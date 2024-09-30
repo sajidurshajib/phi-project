@@ -1,0 +1,72 @@
+{% extends 'dashboard/layout.html' %} {% block content%}
+
+<div>
+    <h2 class="text-gray-600">Resources</h2>
+    <div class="flex">
+        <a href="/dashboard/resources-add" class="bg-blue-500 text-white px-6 py-2 mt-4 rounded-md block">
+            Add Resource ></a
+        >
+    </div>
+
+    <div class="mt-6 max-w-[900px]">
+        <div class="p-4 grid grid-cols-12 gap-4 rounded-sm mb-4">
+            {% for n in resources %}
+            <div class="col-span-3 bg-slate-100 p-4 rounded-sm">
+                <span class="w-full flex justify-center py-2">
+                    <i class="fa-regular fa-file-pdf text-4xl"></i>
+                </span>
+                <p class="text-gray-600 font-bold mb-2 text-center">{{ n.title }}</p>
+                <div class="mb-4 grid grid-cols-12 gap-2">
+                    <a
+                        class="text-white bg-blue-500 px-3 py-1 rounded-sm mr-1 col-span-6 text-center text-sm"
+                        href="/dashboard/resources-edit/{{ n.id }}"
+                        >Edit</a
+                    >
+                    <a
+                        class="text-white bg-red-500 px-3 py-1 rounded-sm mr-1 col-span-6 text-center text-sm"
+                        href="/dashboard/resources-remove/{{ n.id }}"
+                        >Delete</a
+                    >
+                </div>
+                <p class="text-xs text-center text-gray-500 mt-4">{{ n.created_at }}</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="flex justify-center pt-6">
+            <span>
+                {% if resources.has_previous %}
+                <a
+                    href="?page=1&limit=6"
+                    class="bg-slate-200 text-gray-500 rounded-sm px-3 py-1 hover:bg-blue-500 hover:text-white"
+                    ><< First</a
+                >
+                <a
+                    href="?page={{ resources.previous_page_number }}&limit=6"
+                    class="bg-slate-200 text-gray-500 rounded-sm px-3 py-1 hover:bg-blue-500 hover:text-white"
+                    >< Previous</a
+                >
+                {% endif %}
+
+                <span class="bg-slate-200 text-gray-700 rounded-sm px-3 py-1 mx-1">
+                    Page {{ resources.number }} of {{ resources.paginator.num_pages }}
+                </span>
+
+                {% if evenst.has_next %}
+                <a
+                    href="?page={{ resources.next_page_number }}&limit=6"
+                    class="bg-slate-200 text-gray-500 rounded-sm px-3 py-1 hover:bg-blue-500 hover:text-white"
+                    >Next ></a
+                >
+                <a
+                    href="?page={{ resources.paginator.num_pages }}&limit=6"
+                    class="bg-slate-200 text-gray-500 rounded-sm px-3 py-1 hover:bg-blue-500 hover:text-white"
+                    >Last >></a
+                >
+                {% endif %}
+            </span>
+        </div>
+    </div>
+</div>
+
+{%endblock %}

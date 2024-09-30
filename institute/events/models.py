@@ -1,11 +1,12 @@
 from django.db import models
 from django.utils.text import slugify
 from datetime import datetime
+from tinymce.models import HTMLField
 
 class Events(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField(unique=True, blank=True, max_length=255)
-    body = models.TextField()
+    body = HTMLField()
     address = models.TextField(default='')
     date = models.DateField(default=datetime.now)
     created_at = models.DateTimeField(auto_now_add=True)

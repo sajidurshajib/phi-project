@@ -34,7 +34,7 @@ def events(request):
 @login_required(login_url='/accounts')
 def events_add(request):
     if request.method == 'POST':
-        form = EventForm(request.POST, request.FILES)
+        form = EventForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('dashboard-events')
@@ -49,7 +49,7 @@ def events_edit(request, id):
     events = get_object_or_404(Events, pk=id)
 
     if request.method == 'POST':
-        form = EventForm(request.POST, request.FILES, instance=events)
+        form = EventForm(request.POST, instance=events)
         if form.is_valid():
             form.save()
             return redirect('dashboard-events')
