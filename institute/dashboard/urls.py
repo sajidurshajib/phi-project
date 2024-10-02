@@ -2,6 +2,7 @@ from django.urls import path
 from . import views
 from managements.views import managements, managements_add, managements_edit, managements_remove
 from resources.views import resources, resources_add, resources_edit, resources_remove
+from projects.views import projects, projects_add, projects_edit, projects_remove
 from events.views import events, events_add, events_edit, events_remove
 
 urlpatterns = [
@@ -12,6 +13,11 @@ urlpatterns = [
     path('managements-add/', managements_add, name='dashboard-managements-add'),
     path('managements-edit/<int:id>', managements_edit, name='dashboard-managements-edit'),
     path('managements-remove/<int:id>', managements_remove, name='dashboard-managements-remove'),
+
+    path('projects/', projects, name='dashboard-projects'),
+    path('projects-add/', projects_add, name='dashboard-projects-add'),
+    path('projects-edit/<int:id>', projects_edit, name='dashboard-projects-edit'),
+    path('projects-remove/<int:id>', projects_remove, name='dashboard-projects-remove'),
 
     path('resources/', resources, name='dashboard-resources'),
     path('resources-add/', resources_add, name='dashboard-resources-add'),

@@ -1,12 +1,19 @@
 from django import forms
-from .models import Resources
+from .models import Projects
+from tinymce.widgets import TinyMCE
 
-class ResourceForm(forms.ModelForm):
+
+class ProjectsForm(forms.ModelForm):
+    description = forms.CharField(widget=TinyMCE(attrs={'class': 'mt-1 outline-none border-2 border-gray-200 p-2 w-full', 'rows': 5}))
+
     class Meta:
-        model = Resources
-        fields = ['title', 'pdfUpload']
+        model = Projects
+        fields = ['title', 'description', 'status', 'start_date', 'end_date', 'pdfUpload']
         widgets = {
             'title': forms.TextInput(attrs={'class': 'mt-1 outline-none border-2 border-gray-200 p-2 w-full'}),
+            'status': forms.TextInput(attrs={'class': 'mt-1 outline-none border-2 border-gray-200 p-2 w-full'}),
+            'start_date': forms.SelectDateWidget(attrs={'class': 'mt-1 outline-none border-2 border-gray-200 p-2 w-full'}),
+            'end_date': forms.SelectDateWidget(attrs={'class': 'mt-1 outline-none border-2 border-gray-200 p-2 w-full'}),
             'pdfUpload': forms.ClearableFileInput(attrs={'class': 'mt-1 outline-none border-2 border-gray-200 p-2 w-full'}),
         }
 

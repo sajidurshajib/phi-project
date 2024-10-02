@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'dashboard.apps.DashboardConfig',
     'managements.apps.ManagementsConfig',
     'resources.apps.ResourcesConfig',
+    'projects.apps.ProjectsConfig',
     'events.apps.EventsConfig',
 ]
 

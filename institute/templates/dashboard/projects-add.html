@@ -1,11 +1,9 @@
 {% extends 'dashboard/layout.html' %} {% block content%}
 
 <div>
-    <h2 class="text-gray-600">Add Resource</h2>
+    <h2 class="text-gray-600">Add Project</h2>
     <div class="flex">
-        <a href="/dashboard/resources" class="bg-blue-500 text-white px-6 py-2 mt-4 rounded-md block">
-            < All Resources</a
-        >
+        <a href="/dashboard/projects" class="bg-blue-500 text-white px-6 py-2 mt-4 rounded-md block"> < All Projects</a>
     </div>
     <div class="max-w-[50vw]">
         <form method="post" enctype="multipart/form-data" class="space-y-4">
@@ -13,7 +11,7 @@
             <button
                 type="submit"
                 class="bg-blue-500 text-white px-6 py-2 mt-4 rounded-md block focus:text-gray-500 focus:bg-slate-200">
-                Add Resource
+                Add Project
             </button>
         </form>
     </div>
