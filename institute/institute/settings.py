@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'managements.apps.ManagementsConfig',
     'resources.apps.ResourcesConfig',
     'projects.apps.ProjectsConfig',
+    'trainings.apps.TrainingsConfig',
     'events.apps.EventsConfig',
 ]
 

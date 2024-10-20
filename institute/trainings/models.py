@@ -1,10 +1,11 @@
-import uuid
 from django.db import models
 from django.utils.text import slugify
+from tinymce.models import HTMLField
 from PIL import Image
 from io import BytesIO
-from tinymce.models import HTMLField
 from django.core.files.uploadedfile import InMemoryUploadedFile
+import os
+import uuid
 
 
 def optimize_and_convert_to_jpeg(image):
@@ -14,52 +15,56 @@ def optimize_and_convert_to_jpeg(image):
     quality = 100
     buffer = BytesIO()
 
+    # Save image to buffer first, then check size
+    img.save(buffer, format='JPEG', quality=quality)
+    buffer.seek(0)
+
     if buffer.tell() <= max_size:
-        img.save(buffer, format='JPEG', quality=quality)
-        buffer.seek(0)
         return InMemoryUploadedFile(buffer, None, f"{uuid.uuid4()}.jpeg", 'image/jpeg', buffer.getbuffer().nbytes, None)
-    
+
     while True:
         buffer = BytesIO()
         img.save(buffer, format='JPEG', quality=quality)
+        buffer.seek(0)
+
         if buffer.tell() <= max_size or quality <= 50:
             break
         quality -= 5
-        buffer.seek(0)
-        img = Image.open(buffer)
 
     return InMemoryUploadedFile(buffer, None, f"{uuid.uuid4()}.jpeg", 'image/jpeg', buffer.getbuffer().nbytes, None)
 
 
+def upload_to(instance, filename):
+    base, ext = os.path.splitext(filename)
+    return f'trainings_doc/{instance.slug}-{uuid.uuid4()}{ext}'
 
-class Managements(models.Model):
-    name = models.CharField(max_length=100)  
-    slug = models.SlugField(unique=True, blank=True, max_length=255)
-    position = models.CharField(max_length=100)
-    detail = HTMLField()
-    image = models.ImageField(upload_to='management_image/', blank=True, null=True)  
-    priority = models.IntegerField(default=0) 
+
+class Trainings(models.Model):
+    title = models.CharField(max_length=255)
+    slug = models.SlugField(unique=True, blank=True)
+    description = HTMLField()
+    pdfUpload = models.FileField(upload_to=upload_to)
+    image = models.ImageField(upload_to='trainings_image/', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def save(self, *args, **kwargs):
-        # Generate slug if it doesn't exist or name has changed
-        if not self.slug or (self.pk and self.name != Managements.objects.get(pk=self.pk).name):
-            self.slug = slugify(self.name)
+        # Generate slug if it doesn't exist or title has changed
+        if not self.slug or (self.pk and self.title != Trainings.objects.get(pk=self.pk).title):
+            self.slug = slugify(self.title)
             counter = 1
             new_slug = self.slug
             
-            while Managements.objects.filter(slug=new_slug).exists():
+            while Trainings.objects.filter(slug=new_slug).exists():
                 new_slug = f"{self.slug}-{counter}"
                 counter += 1
             self.slug = new_slug
 
-
-        # Optimize image and rename using UUID
+        # Optimize image if present
         if self.image:
             self.image = optimize_and_convert_to_jpeg(self.image)
 
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f"{self.name} - {self.position}"
+        return self.title
